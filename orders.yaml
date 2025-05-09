@@ -1,0 +1,74 @@
+asyncapi: '2.6.0'
+info:
+  title: Orders Service
+  version: '1.0.0'
+  description: |
+    This service handles the creation, update, and deletion of orders.
+
+servers:
+  production:
+    url: 'orders.example.com'
+    protocol: 'https'
+
+channels:
+  orders:
+    description: Channel for order events
+    subscribe:
+      summary: Receive order events
+      operationId: receiveOrder
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            orderId:
+              type: string
+              description: Unique identifier for the order
+            status:
+              type: string
+              description: Status of the order
+              enum:
+                - created
+                - updated
+                - deleted
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  itemId:
+                    type: string
+                    description: Unique identifier for the item
+                  quantity:
+                    type: integer
+                    description: Quantity of the item
+
+components:
+  messages:
+    OrderEvent:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          orderId:
+            type: string
+            description: Unique identifier for the order
+          status:
+            type: string
+            description: Status of the order
+            enum:
+              - created
+              - updated
+              - deleted
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                itemId:
+                  type: string
+                  description: Unique identifier for the item
+                quantity:
+                  type: integer
+                  description: Quantity of the item
+

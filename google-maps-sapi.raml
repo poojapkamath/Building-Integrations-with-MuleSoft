@@ -1,0 +1,73 @@
+#%RAML 1.0
+title: Google Maps SAPI Integration
+version: v1
+baseUri: https://maps.google.sapi.com/maps/api
+mediaType: application/json
+
+/geocode:
+  get:
+    description: Retrieve geolocation information based on an address
+    displayName: get geocode
+    queryParameters:
+      address: string
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "latitude": 34.0522,
+                "longitude": -118.2437
+              }
+
+/directions:
+  get:
+    description: Get directions between two locations
+    displayName: get directions
+    queryParameters:
+      origin: string
+      destination: string
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "route": "Take I-405 S",
+                "duration": "30 mins"
+              }
+
+/places:
+  get:
+    description: Search for places near a specific location
+    displayName: get nearby locale
+    queryParameters:
+      location: string
+      type: string
+    responses:
+      200:
+        body:
+          application/json:
+            examples:
+              example1: |
+                {
+                  "status": "success",
+                  "results": [
+                    {
+                      "address": "221B Baker Street, London, UK",
+                      "latitude": 51.523767,
+                      "longitude": -0.158374
+                    }
+                  ]
+                }
+              example2: |
+                {
+                  "status": "success",
+                  "results": [
+                    {
+                      "address": "12 Grimmauld Place, London, UK",
+                      "latitude": 51.530297,
+                      "longitude": -0.123735
+                    }
+                  ]
+                }

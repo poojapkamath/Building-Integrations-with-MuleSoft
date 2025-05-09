@@ -1,0 +1,16 @@
+#%RAML 1.0 ResourceType
+usage: "Resource type for the Geocode endpoint."
+get:
+  queryParameters:
+    address:
+      type: string
+      description: "Address to geocode"
+  responses:
+    200:
+      body:
+        application/json:
+          example: |
+            {
+              "latitude": 34.0522,
+              "longitude": -118.2437
+            }
