@@ -1,0 +1,11 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd     http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+  <flow name="20-sec-schedule-flow">
+    <scheduler doc:name="Scheduler" doc:id="wvncvs" >
+      <scheduling-strategy>
+        <fixed-frequency frequency="20" timeUnit="SECONDS"/>
+      </scheduling-strategy>
+    </scheduler>
+    <logger doc:name="Logger" doc:id="dmmlqj" message='"Starting 20 second scheduler"'/>
+  
+  </flow>
+</mule>
